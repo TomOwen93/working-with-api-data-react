@@ -1,7 +1,11 @@
+import { GiPorcupine } from "react-icons/gi";
+
 function PageTitle(): JSX.Element {
   return (
     <div>
-      <h1 className="title">Welcome to my Pokemon Website</h1>
+      <h1 className="title">
+        <GiPorcupine /> Pokemon Lookup
+      </h1>
     </div>
   );
 }

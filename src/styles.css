@@ -1,8 +1,19 @@
 /* Styles for the main container */
+
+.body {
+  background-color: #fac3c3;
+  background-image: url('/src/components/gradient.svg');
+}
+
+.nav-bar {
+  background-color: #333;
+}
+
 .container {
-  width: 400px;
+  width: 500px;
   margin: 0 auto;
   padding: 20px;
+  border-radius: 10px;
   background-color: #fac3c3;
   text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -10,12 +21,17 @@
 
 /* Styles for the input box */
 .input-box {
-  width: 90%;
+  width: 70%;
   padding: 10px;
   font-size: 16px;
   margin-bottom: 20px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  text-align: center;
+  transition: width 0.1s ease-in-out;
+}
+.input-box:focus-within {
+  width: 20%;
 }
 
 /* Styles for the button */
@@ -26,6 +42,7 @@
   border: none;
   padding: 10px 20px;
   border-radius: 4px;
+  margin: 2%;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -36,33 +53,64 @@
 
 /* Styles for the Pokémon information container */
 .pokemon-info {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 20px;
-  background-color: #fff;
+  background-color: #f7b1b1;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  outline: 1px solid black;
+  display: flex;
 }
 
 /* Styles for the Pokémon name */
 .pokemon-name {
-  font-size: 24px;
+  font-family: "Arial", cursive; /* Replace with your desired font */
+  font-size: 48px;
   font-weight: bold;
-  margin-bottom: 10px;
+  color: black; /* Replace with your desired color */
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.pokemon-stat-title{
+  margin: 0%;
 }
 
 /* Styles for the Pokémon image */
 .pokemon-image {
   width: 200px;
   height: 200px;
+  background-color: white;
   margin: 0 auto;
   margin-bottom: 20px;
-  border-radius: 50%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  transition: border-radius 0.2s ease-in-out;
+}
+
+.pokemon-image:hover {
+  border-radius: 80%;
 }
 
 /* Styles for the Pokémon stats */
 .pokemon-stats {
-  font-size: 16px;
+  font-size: 20px;
+  text-align: center;
+  padding: 5%;
+  background-color: #f3eeee;
+  border-radius: 4px;
+  box-shadow: 0 5px 4px rgba(0, 0, 0, 0.1);
+  outline: 1px solid black;
+}
+
+.nav-list {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
 }
 
 /* Styles for the error message */

@@ -1,5 +1,5 @@
 import PageHeader from "./components/PageHeader";
-// import "./styles.css";
+import "./styles.css";
 import { pokemons } from "./data";
 import { useState } from "react";
 import MainContent from "./components/MainContent";
@@ -28,16 +28,15 @@ function App(): JSX.Element {
     <body className="container">
       <PageHeader />
       <input className="input-box" onChange={handleInput}></input>
-      <button
-        className="button"
-        onMouseEnter={() => setIsShownButton(true)}
-        onMouseLeave={() => setIsShownButton(false)}
-        onClick={handleButton}
-      >
+      <button className="button" onClick={handleButton}>
         Submit
       </button>
-      {isShownButton && <div>I'll appear when you hover over the button.</div>}
-      <MainContent pokemon={pokemon} />
+      <MainContent
+        name={pokemon.name}
+        abilities={pokemon.abilities}
+        image={pokemon.sprites.front_default}
+        stats={pokemon.stats}
+      />
     </body>
   );
 }
