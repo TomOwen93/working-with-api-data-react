@@ -1,0 +1,84 @@
+/* Styles for the main container */
+.container {
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fac3c3;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for the input box */
+.input-box {
+  width: 90%;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Styles for the button */
+.button {
+  background-color: #ffcc00;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #ffa500;
+}
+
+/* Styles for the Pokémon information container */
+.pokemon-info {
+  text-align: center;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for the Pokémon name */
+.pokemon-name {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Styles for the Pokémon image */
+.pokemon-image {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for the Pokémon stats */
+.pokemon-stats {
+  font-size: 16px;
+}
+
+/* Styles for the error message */
+.error-message {
+  color: red;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Styles for the title */
+.title {
+  font-family: "Arial", sans-serif; /* Replace with your desired font */
+  font-size: 36px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
