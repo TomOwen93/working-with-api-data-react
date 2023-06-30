@@ -13,16 +13,24 @@ function App(): JSX.Element {
     setInputValue(event.target.value);
   };
 
-  const handleButton = () => {
-    const pokemonIndex = pokemons.findIndex((pokemon) =>
-      pokemon.name.toLowerCase().includes(inputValue.toLowerCase())
-    );
 
-    if (pokemonIndex === undefined) {
-      setPokemon(pokemons[0]);
-    }
-    setPokemon(pokemons[pokemonIndex]);
-  };
+
+  // const handleButton = () => {
+  //   const pokemonIndex = pokemons.findIndex((pokemon) =>
+  //     pokemon.name.toLowerCase().includes(inputValue.toLowerCase())
+  //   );
+
+  //   if (pokemonIndex === undefined) {
+  //     setPokemon(pokemons[0]);
+  //   }
+  //   setPokemon(pokemons[pokemonIndex]);
+  // };
+
+  const handleButton = () => {
+    setPokemon(pokemons.filter((el) => el.types.filter(el => el.type.name === inputValue)))
+  }
+  console.log(pokemon)
+  debugger
 
   return (
     <body>
@@ -35,10 +43,7 @@ function App(): JSX.Element {
       </div>
       <div className="container">
         <MainContent
-          name={pokemon.name}
-          abilities={pokemon.abilities}
-          image={pokemon.sprites.front_default}
-          stats={pokemon.stats}
+         {pokemon}
         />
       </div>
     </body>

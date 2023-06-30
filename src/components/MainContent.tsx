@@ -6,6 +6,15 @@ interface MainContentProps {
   name: string;
   image: string;
   stats: Stat[];
+  poketypes: poketype[]
+}
+
+interface poketype{
+slot: number,
+type: {
+  name: string,
+  url?: string
+}
 }
 
 interface Ability {
@@ -25,18 +34,21 @@ function MainContent(props: MainContentProps): JSX.Element {
         abilities={props.abilities}
         image={props.image}
         stats={props.stats}
+        poketypes={props.poketypes}
       />
       <PokemonContainer
         name={props.name}
         abilities={props.abilities}
         image={props.image}
         stats={props.stats}
+        poketypes={props.poketypes}
       />
       <PokemonContainer
         name={props.name}
         abilities={props.abilities}
         image={props.image}
         stats={props.stats}
+        poketypes={props.poketypes}
       />
     </>
   );
