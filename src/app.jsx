@@ -3,7 +3,6 @@
 import { pokemons } from "./data";
 import { useState } from "react";
 import MainContent from "./components/MainContent";
-import { pokemons } from "./data";
 
 function App(){
   const [pokemon, setPokemon] = useState(pokemons[0]);
@@ -29,7 +28,7 @@ function App(){
   }
 
   console.log(pokemon)
-
+  
   return (
     <body>
       <PageHeader />
