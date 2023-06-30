@@ -30,11 +30,7 @@ export function PokemonContainer({
   const [isShownImgDesc, setIsShownImgDesc] = useState(false);
 
   return (
-    <div
-      className="pokemon-info"
-      onMouseEnter={() => setIsShownImgDesc(true)}
-      
-    >
+    <div className="pokemon-info" onMouseEnter={() => setIsShownImgDesc(true)}>
       <h1 className="pokemon-name">{capitalize(name)}</h1>
       <img className="pokemon-image" src={image}></img>
       {isShownImgDesc && (

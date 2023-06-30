@@ -26,7 +26,18 @@ function MainContent(props: MainContentProps): JSX.Element {
         image={props.image}
         stats={props.stats}
       />
-      <hr />
+      <PokemonContainer
+        name={props.name}
+        abilities={props.abilities}
+        image={props.image}
+        stats={props.stats}
+      />
+      <PokemonContainer
+        name={props.name}
+        abilities={props.abilities}
+        image={props.image}
+        stats={props.stats}
+      />
     </>
   );
 }

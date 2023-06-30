@@ -25,18 +25,22 @@ function App(): JSX.Element {
   };
 
   return (
-    <body className="container">
+    <body>
       <PageHeader />
-      <input className="input-box" onChange={handleInput}></input>
-      <button className="button" onClick={handleButton}>
-        Submit
-      </button>
-      <MainContent
-        name={pokemon.name}
-        abilities={pokemon.abilities}
-        image={pokemon.sprites.front_default}
-        stats={pokemon.stats}
-      />
+      <div className="input-and-button">
+        <input className="input-box" onChange={handleInput}></input>
+        <button className="button" onClick={handleButton}>
+          Submit
+        </button>
+      </div>
+      <div className="container">
+        <MainContent
+          name={pokemon.name}
+          abilities={pokemon.abilities}
+          image={pokemon.sprites.front_default}
+          stats={pokemon.stats}
+        />
+      </div>
     </body>
   );
 }
