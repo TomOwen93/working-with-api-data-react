@@ -11,7 +11,7 @@ function PageHeader(): JSX.Element {
         <NavElement title={"FAQs"} />
         <NavElement title={"Login"} />{" "}
       </div>
-      <hr />
+      <span><hr /></span>
     </>
   );
 }

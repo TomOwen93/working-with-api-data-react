@@ -2,7 +2,7 @@
 // import "./styles.css";
 import { pokemons } from "./data";
 import { useState } from "react";
-import MainContent from "./components/MainContent";
+import MainContent from "./components/Main-Container";
 
 function App(){
   const [pokemon, setPokemon] = useState(pokemons[0]);
@@ -24,7 +24,8 @@ function App(){
   // };
 
   const handleButton = () => {
-    setPokemon(pokemons.filter((el) => el.types.filter(el => el.type.name === inputValue)))
+    const newPokemons = pokemons.filter((el) => el.types.filter(el => el.type.name === inputValue))
+    setPokemon(newPokemons)
   }
 
   console.log(pokemon)
