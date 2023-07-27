@@ -1,14 +1,21 @@
 interface NavElementProps {
   title: string;
+  handleClick: (title: string) => void;
 }
 
-function NavElement({ title }: NavElementProps): JSX.Element {
+function NavElement({ title, handleClick }: NavElementProps): JSX.Element {
+  const handleClicked = () => handleClick(title);
+
   return (
-    <div>
-      <p>
-        {" "}
-        <a href="#">{title}</a> |{" "}
-      </p>
+    <div className="nav-link">
+      {" "}
+      <button
+        onClick={handleClicked}
+        style={{ background: "none", color: "white" }}
+      >
+        {title}
+      </button>{" "}
+      |{" "}
     </div>
   );
 }

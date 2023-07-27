@@ -1,17 +1,23 @@
 import PageTitle from "./PageTitle";
 import NavElement from "./NavElement";
 
-function PageHeader(): JSX.Element {
+interface PageHeaderProps {
+  handleClick: (title: string) => void;
+}
+
+function PageHeader({ handleClick }: PageHeaderProps): JSX.Element {
   return (
     <>
       <PageTitle />
       <div className="nav-list">
-        <NavElement title={"Home"} />
-        <NavElement title={"Contact"} />
-        <NavElement title={"FAQs"} />
-        <NavElement title={"Login"} />{" "}
+        <NavElement title={"Home"} handleClick={handleClick} />
+        <NavElement title={"Contact"} handleClick={handleClick} />
+        <NavElement title={"FAQs"} handleClick={handleClick} />
+        <NavElement title={"Login"} handleClick={handleClick} />{" "}
       </div>
-      <span><hr /></span>
+      <span>
+        <hr />
+      </span>
     </>
   );
 }

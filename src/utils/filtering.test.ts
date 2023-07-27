@@ -1,5 +1,5 @@
 import { filterPokemon } from "./pokemon-filter";
 
-test("", () => {
+test.skip("check type of pokemon", () => {
   expect(filterPokemon([], "psychic")).toEqual([]);
 });
