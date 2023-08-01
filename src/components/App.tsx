@@ -125,6 +125,7 @@ function App(): JSX.Element {
       timeline.fromTo(".full-header", { y: "-100%" }, { y: "0%" });
     }, animRef);
     return () => ctx.revert();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useLayoutEffect(() => {
