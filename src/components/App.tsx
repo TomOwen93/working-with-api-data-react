@@ -34,7 +34,7 @@ function App(): JSX.Element {
     (PokemonMain & PokemonSpecies)[]
   >([]);
   const [activePage, setActivePage] = useState("Home");
-  const [showFavourites, setShowFavourites] = useState(false)
+  const [showFavourites, setShowFavourites] = useState(false);
 
   const favRef = useRef<HTMLDivElement | null>(null);
   const animRef = useRef<HTMLDivElement>(null);
@@ -87,28 +87,28 @@ function App(): JSX.Element {
   };
 
   const handleFavourites = (pokemon: PokemonMain & PokemonSpecies) => {
-    if(selectedFavourites.length === 0 && !showFavourites){
-      setShowFavourites(true)
+    console.log(selectedFavourites.length);
+
+    if (selectedFavourites.length === 0 && !showFavourites) {
+      console.log("setShowFavouritess set to true");
+      setShowFavourites(true);
     }
 
     if (!selectedFavourites.includes(pokemon)) {
       setSelectedFavourites((prev) => [...prev, pokemon]);
     }
-
   };
 
   const handleRemoveAFavourite = (removed: PokemonMain & PokemonSpecies) => {
-
-    if(selectedFavourites.length === 0 && showFavourites){
-      setShowFavourites(false)
+    console.log(selectedFavourites.length);
+    if (selectedFavourites.length === 1 && showFavourites) {
+      console.log("setShowFavouritess set to false");
+      setShowFavourites(false);
     }
 
     setSelectedFavourites(
       selectedFavourites.filter((pokemon) => pokemon.id !== removed.id)
     );
-
-   
-
   };
 
   const handleClearFavourites = () => setSelectedFavourites([]);
@@ -128,18 +128,14 @@ function App(): JSX.Element {
   }, []);
 
   useLayoutEffect(() => {
-     
-      const ctx = gsap.context(() => {
-        if (showFavourites){
-        timeline.fromTo(".favourites-container", { x: "-100%" }, { x: "0%" })}
-        else{timeline.fromTo(".favourites-container", { x: "0%" }, { x: "-100%" })}
-      }, animRef)
-      return () => ctx.revert()
-    
+    const ctx = gsap.context(() => {
+      if (showFavourites) {
+        timeline.fromTo(".favourites-container", { x: "-100%" }, { x: "0%" });
+      }
+    }, animRef);
+    return () => ctx.revert();
+     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showFavourites]);
-
-
-  
 
   const handlePage = (title: string) => setActivePage(title);
 
