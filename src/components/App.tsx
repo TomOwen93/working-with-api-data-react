@@ -2,12 +2,13 @@ import PageHeader from "./PageHeader";
 import "../styles.css";
 import { PokemonMain } from "../utils/data-main-pokemon";
 import { PokemonSpecies } from "../utils/data-species-pokemon";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useLayoutEffect } from "react";
 import MainContainer from "./Main-Container";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import SearchInput from "./SearchInput";
 import capitalize from "../utils/capitalize";
 import { pokemonNames } from "../utils/pokemonNames";
+import gsap from "gsap";
 
 // const filterOptions = ["type", "pokemon"];
 
@@ -33,8 +34,11 @@ function App(): JSX.Element {
     (PokemonMain & PokemonSpecies)[]
   >([]);
   const [activePage, setActivePage] = useState("Home");
+  const [showFavourites, setShowFavourites] = useState(false)
 
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  const favRef = useRef<HTMLDivElement | null>(null);
+  const animRef = useRef<HTMLDivElement>(null);
+
   const [animationParent] = useAutoAnimate();
   const fetchPokemonsMain = async () => {
     const response = await fetch(
@@ -83,16 +87,28 @@ function App(): JSX.Element {
   };
 
   const handleFavourites = (pokemon: PokemonMain & PokemonSpecies) => {
-    console.log(pokemon);
+    if(selectedFavourites.length === 0 && !showFavourites){
+      setShowFavourites(true)
+    }
+
     if (!selectedFavourites.includes(pokemon)) {
       setSelectedFavourites((prev) => [...prev, pokemon]);
     }
+
   };
 
   const handleRemoveAFavourite = (removed: PokemonMain & PokemonSpecies) => {
+
+    if(selectedFavourites.length === 0 && showFavourites){
+      setShowFavourites(false)
+    }
+
     setSelectedFavourites(
       selectedFavourites.filter((pokemon) => pokemon.id !== removed.id)
     );
+
+   
+
   };
 
   const handleClearFavourites = () => setSelectedFavourites([]);
@@ -102,18 +118,33 @@ function App(): JSX.Element {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [submitValue]);
 
+  const timeline = gsap.timeline({ defaults: { duration: 1 } });
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      timeline.fromTo(".full-header", { y: "-100%" }, { y: "0%" });
+    }, animRef);
+    return () => ctx.revert();
+  }, []);
+
+  useLayoutEffect(() => {
+     
+      const ctx = gsap.context(() => {
+        if (showFavourites){
+        timeline.fromTo(".favourites-container", { x: "-100%" }, { x: "0%" })}
+        else{timeline.fromTo(".favourites-container", { x: "0%" }, { x: "-100%" })}
+      }, animRef)
+      return () => ctx.revert()
+    
+  }, [showFavourites]);
+
+
+  
+
   const handlePage = (title: string) => setActivePage(title);
 
-  console.log(selectedFavourites.length === 0 && activePage === "Home");
-  console.log(
-    selectedFavourites.length,
-    selectedFavourites.length === 0,
-    activePage,
-    activePage === "Home"
-  );
-
   return (
-    <div className="app">
+    <div className="app" ref={animRef}>
       <div
         className={`page-header${
           selectedFavourites.length === 0 || activePage !== "Home"
@@ -183,12 +214,11 @@ function App(): JSX.Element {
               pokemonsArray={searchedPokemon}
               handleFavourites={handleFavourites}
               handleRemoveFavourites={handleRemoveAFavourite}
-              ref={containerRef}
               type="main"
             />
           </div>
           {selectedFavourites.length > 0 && (
-            <div className="favourites-container">
+            <div className="favourites-container" ref={favRef}>
               <h1>Favourites:</h1>
               <MainContainer
                 pokemonsArray={selectedFavourites}
