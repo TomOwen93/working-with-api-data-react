@@ -8,13 +8,16 @@ interface PageHeaderProps {
 function PageHeader({ handleClick }: PageHeaderProps): JSX.Element {
   return (
     <>
-      <PageTitle />
-      <div className="nav-list">
-        <NavElement title={"Home"} handleClick={handleClick} />
-        <NavElement title={"Contact"} handleClick={handleClick} />
-        <NavElement title={"FAQs"} handleClick={handleClick} />
-        <NavElement title={"Login"} handleClick={handleClick} />{" "}
+      <div className="full-header">
+        <PageTitle />
+        <div className="nav-list">
+          <NavElement title={"Home"} handleClick={handleClick} />
+          <NavElement title={"Contact"} handleClick={handleClick} />
+          <NavElement title={"FAQs"} handleClick={handleClick} />
+          <NavElement title={"Login"} handleClick={handleClick} />{" "}
+        </div>
       </div>
+
       <span>
         <hr />
       </span>
