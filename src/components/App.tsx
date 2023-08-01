@@ -134,7 +134,7 @@ function App(): JSX.Element {
       }
     }, animRef);
     return () => ctx.revert();
-     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showFavourites]);
 
   const handlePage = (title: string) => setActivePage(title);
